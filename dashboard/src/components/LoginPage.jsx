@@ -4,13 +4,17 @@ import jsIcon from "../assets/js_icon.png";
 import nextJsIcon from "../assets/nextjs_icon.png";
 import reactIcon from "../assets/react_icon.png";
 import tailwindIcon from "../assets/tailwindcss_icon.png";
+import Button from "./Button";
 import Icons from "./Icons";
+import InputField from "./InputField";
+import Navbar from "./Navbar";
 import SpanLinks from "./SpanLinks";
 
 export default function LoginPage() {
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
-      <div className="absolute left-0 w-full md:w-[500px] h-full flex flex-col items-center justify-center bg-login">
+      <Navbar />
+      <div className="absolute left-0 w-full md:w-[500px] h-full hidden md:flex flex-col items-center justify-center bg-login">
         <h2 className="text-3xl font-bold font-primary mb-4">
           Hi, Welcome back
         </h2>
@@ -30,16 +34,16 @@ export default function LoginPage() {
           />
         </div>
       </div>
-      <div className="flex-1 flex items-center justify-center ml-[500px] bg-white">
+      <div className="flex-1 flex items-center justify-center md:ml-[500px] bg-white">
         <div className="w-full max-h-[420px] max-w-[420px]">
           <h3 className="text-xl font-bold text-start mb-2">
             Sign in to your account
           </h3>
-          <p className="text-sm text-txtsec mb-6">
+          <p className="text-sm text-txtsec mb-8">
             Don't have an account?{" "}
             <SpanLinks text="Get Started" path="/register" />
           </p>
-          <div className="flex gap-2 items-center justify-center w-full bg-blue-100 px-4 py-3 rounded-md">
+          <div className="flex gap-2 items-center justify-center w-full bg-blue-100 px-4 py-3 mb-8 rounded-md">
             <FcInfo />
 
             <p>
@@ -48,34 +52,21 @@ export default function LoginPage() {
             </p>
           </div>
           <form>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full mt-1 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-            </div>
+            <InputField label="Email" placeholder="" type="email" id="email" />
 
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                className="w-full mt-1 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-            </div>
+            <p className="mb-4 text-end font-primary text-gray-800 hover:underline cursor-pointer">
+              Forgot Password?
+            </p>
 
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition"
-            >
-              Login
-            </button>
+            <InputField
+              label="Password"
+              placeholder=""
+              type="password"
+              id="password"
+              htmlFor=""
+            />
+
+            <Button type="submit" title="Sign In" variant="btnPrimary" />
           </form>
         </div>
       </div>
