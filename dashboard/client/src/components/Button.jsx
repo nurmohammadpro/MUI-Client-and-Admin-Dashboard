@@ -17,16 +17,18 @@
 //   );
 // }
 
-export default function Button({ title, type, variant, style }) {
+export default function Button({ title, type, variant, style, onClick }) {
   const buttonStyles = {
     btnPrimary: "bg-black text-white hover:bg-gray-800",
-    btnSec: "bg-white text-black hover:bg-gray-50",
+    btnSec:
+      "bg-white text-black hover:bg-gray-100 border border-gray-300 hover:border-gray-600",
   };
 
   return (
     <button
-      className={`w-full rounded-md font-medium py-3 transition-all ease-in-out duration-300 ${buttonStyles[variant]}`}
+      className={`w-full rounded-md font-medium px-6 py-3 transition-all ease-in-out duration-300 ${buttonStyles[variant]}`}
       type={type}
+      onClick={onClick}
     >
       {title}
     </button>

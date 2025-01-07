@@ -2,7 +2,14 @@ import { useState } from "react";
 import { RxEyeOpen } from "react-icons/rx";
 import { TbEyeClosed } from "react-icons/tb";
 
-export default function InputField({ label, placeholder, type, id, htmlFor }) {
+export default function InputField({
+  label,
+  placeholder,
+  type,
+  value,
+  id,
+  htmlFor,
+}) {
   const [showPass, setShowPass] = useState(false);
 
   return (
@@ -11,7 +18,8 @@ export default function InputField({ label, placeholder, type, id, htmlFor }) {
         type={type === "password" ? (showPass ? "text" : "password") : type}
         id={id}
         placeholder={placeholder}
-        className="border border-gray-200 rounded-md px-3 py-3 w-full hover:border-gray-400 focus:border-gray-600"
+        className="border border-gray-200 rounded-md px-3 py-4 w-full hover:border-gray-400 focus:border-gray-600"
+        value={value}
       />
       <label
         htmlFor={htmlFor || id}
@@ -22,7 +30,7 @@ export default function InputField({ label, placeholder, type, id, htmlFor }) {
 
       {type === "password" && (
         <span
-          className="absolute right-4 top-4"
+          className="absolute right-4 top-4 cursor-pointer"
           onClick={() => setShowPass(!showPass)}
         >
           {showPass ? <RxEyeOpen /> : <TbEyeClosed />}

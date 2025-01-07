@@ -4,7 +4,7 @@ import Icons from "./Icons";
 
 export default function Navbar() {
   return (
-    <div className="absolute w-full px-8 py-8 top-0 flex items-center justify-between z-10">
+    <div className="absolute w-full px-8 py-8 top-0 flex items-center justify-between z-10 cursor-pointer">
       <Icons src={Logo} alt="Logo" width={24} height={24} />
       <div className="flex gap-4">
         <p className="font-bold text-md hover:underline">Need help?</p>
