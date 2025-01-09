@@ -1,21 +1,31 @@
 import { useState } from "react";
-import { signupUser } from "../../utilities/auth.js";
-
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import InputField from "./InputField";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import SpanLinks from "./SpanLinks";
+import { saveUser } from "./users";
 
 export default function SignupPage() {
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubission = (e) => {
+  const handleSubmission = (e) => {
     e.preventDefault();
-    const [first5Name, lastName] = name.split(" ");
-    signupUser(first5Name, lastName, email, password);
+
+    const newUser = {
+      firstName,
+      lastName,
+      email,
+      password,
+    };
+
+    saveUser(newUser);
+    navigate("/signin");
   };
 
   return (
@@ -38,21 +48,21 @@ export default function SignupPage() {
               <SpanLinks text="@2Minimal" path="#" />
             </p>
           </div> */}
-          <form className="mb-4" onSubmit={handleSubission}>
+          <form className="mb-4" onSubmit={handleSubmission}>
             <div className="flex w-full gap-3">
               <InputField
                 label="First Name"
                 placeholder=""
                 id="firstName"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
               />
               <InputField
                 label="Last Name"
                 placeholder=""
                 id="lastName"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
             <InputField
@@ -74,7 +84,7 @@ export default function SignupPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <Button type="submit" title="Sign In" variant="btnPrimary" />
+            <Button type="submit" title="Sign Up" variant="btnPrimary" />
           </form>
           <p className="text-[14px] w-full text-center text-gray-500">
             by signing up, I agree to{" "}

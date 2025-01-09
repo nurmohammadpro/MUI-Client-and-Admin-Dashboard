@@ -1,20 +1,31 @@
 import { useState } from "react";
-import { signinUser } from "../../utilities/auth.js";
-
 import { FcInfo } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import InputField from "./InputField";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import SpanLinks from "./SpanLinks";
+import { users } from "./users";
+
+// const users = [
+//   { email: "user1@demo.com", password: "pass1234" },
+//   { email: "user2@demo.com", password: "secr1234" },
+// ];
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubission = (e) => {
     e.preventDefault();
-    signinUser(email, password);
+
+    const user = users.find(
+      (usr) => usr.email === email && usr.password === password
+    );
+
+    user ? navigate("/dashboard") : alert("Invalid credentials");
   };
 
   return (

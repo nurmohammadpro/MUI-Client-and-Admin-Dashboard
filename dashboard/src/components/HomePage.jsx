@@ -18,7 +18,7 @@ export default function HomePage() {
     <div className="relative w-full h-screen flex items-center justify-center">
       <Navbar />
       <Sidebar />
-
+      
       <div className="flex gap-4 w-[420px] md:ml-[500px]">
         <Button
           title="Sign In"
